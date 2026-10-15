@@ -16,7 +16,7 @@ const CONTENIDO = {
         titulo: "Actividades",
         descripcion: "Resolución de modelos de optimización correspondientes a la Unidad 2 (Programación Lineal) y Unidad 3 (Problema del Transporte y Modelos de Stock) utilizando herramientas de Solver en Excel.",
         datos: [
-            { clave: "Profesor", valor: "Nombre del profesor" },
+            { clave: "Profesor", valor: "Juarez, Luis" },
             { clave: "Ciclo", valor: "2026" },
             { clave: "Integrantes", valor: "Zarate Alfredo, Frias Santiago, Gomez Ariel, Sangenis Jose Luis" }
         ]
