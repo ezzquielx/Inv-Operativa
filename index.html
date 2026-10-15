@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Actividades de la materia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="hero">
+        <p class="hero__etiqueta" id="materia-etiqueta"></p>
+        <h1 class="hero__titulo" id="materia-titulo"></h1>
+        <p class="hero__texto" id="materia-descripcion"></p>
+        <ul class="hero__datos" id="materia-datos"></ul>
+    </header>
+
+    <nav class="indice" id="indice" aria-label="Índice de actividades"></nav>
+
+    <main class="actividades" id="actividades"></main>
+
+    <footer class="pie" id="pie"></footer>
+
+    <!-- Visor de imágenes (se abre al hacer clic en una imagen) -->
+    <div class="visor" id="visor" hidden>
+        <button class="visor__cerrar" id="visor-cerrar" aria-label="Cerrar">&times;</button>
+        <img class="visor__img" id="visor-img" alt="">
+        <p class="visor__pie" id="visor-pie"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
