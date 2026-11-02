@@ -2,6 +2,8 @@
 
 Sitio web y portafolio de resúmenes teóricos y resolución de modelos de optimización correspondiente a la materia **Investigación Operativa**.
 
+**Sitio:** https://ezzquielx.github.io/Inv-Operativa/
+
 ---
 
 ## Datos de la Cátedra y Grupo
