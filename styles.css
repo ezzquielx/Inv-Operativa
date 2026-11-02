@@ -1,6 +1,5 @@
 /* Layout: una columna centrada de 960px; cada unidad es una tarjeta con bloques internos. */
 :root {
-  /* Paleta Kemuri Koke: fondo carbón cálido, texto crema, acento verde musgo, cobre para fórmulas. */
   --bg: #242120;
   --surface: #2d2927;
   --inset: #242120;
@@ -11,6 +10,7 @@
   --accent-2: #cb9168;
   --font: "IBM Plex Mono", "Courier New", ui-monospace, monospace;
 }
+
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     --bg: #ddd7ca;
@@ -24,6 +24,7 @@
     color-scheme: light;
   }
 }
+
 :root[data-theme="light"] {
   --bg: #ddd7ca;
   --surface: #e7e2d7;
@@ -35,13 +36,20 @@
   --accent-2: #864a2d;
   color-scheme: light;
 }
-:root { color-scheme: dark; }
 
-* { box-sizing: border-box; }
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
 }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -53,7 +61,11 @@ body {
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.wrap { max-width: 960px; margin: 0 auto; }
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+}
 
 .eyebrow {
   margin: 0;
@@ -63,6 +75,7 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
 h1 {
   margin: 6px 0 16px;
   font-size: clamp(2.2rem, 6vw, 3.4rem);
@@ -70,9 +83,20 @@ h1 {
   line-height: 1.1;
   text-wrap: balance;
 }
-.lead { margin: 0 0 24px; max-width: 62ch; color: var(--muted); }
 
-.meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.lead {
+  margin: 0 0 24px;
+  max-width: 62ch;
+  color: var(--muted);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
 .chip {
   margin: 0;
   padding: 6px 14px;
@@ -81,9 +105,19 @@ h1 {
   font-size: 13.5px;
   line-height: 1.5;
 }
-.chip b { color: var(--fg); font-weight: 600; }
 
-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.chip b {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
 nav a {
   padding: 6px 14px;
   background: var(--surface);
@@ -91,8 +125,16 @@ nav a {
   font-size: 13.5px;
   text-decoration: none;
 }
-nav a:hover { color: var(--accent); background: var(--line); }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+nav a:hover {
+  color: var(--accent);
+  background: var(--line);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
 .actividad {
   margin-bottom: 28px;
@@ -100,6 +142,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   background: var(--surface);
   scroll-margin-top: 16px;
 }
+
 .actividad-head {
   display: flex;
   flex-wrap: wrap;
@@ -107,6 +150,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   justify-content: space-between;
   gap: 4px 16px;
 }
+
 h2 {
   margin: 6px 0 0;
   font-size: clamp(1.2rem, 3vw, 1.6rem);
@@ -114,21 +158,60 @@ h2 {
   line-height: 1.3;
   text-wrap: balance;
 }
-.unidad-tag { color: var(--muted); font-size: 12.5px; }
-.intro { margin: 14px 0 22px; color: var(--muted); }
+
+.unidad-tag {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.intro {
+  margin: 14px 0 22px;
+  color: var(--muted);
+}
 
 .bloque {
   margin-top: 16px;
   padding: 18px 20px;
   background: var(--inset);
 }
-.bloque h3 { margin: 0 0 8px; font-size: 1.02rem; font-weight: 600; }
-.bloque p { margin: 0 0 10px; color: var(--muted); }
-.bloque p:last-child, .bloque ul:last-child, .bloque ol:last-child { margin-bottom: 0; }
-.bloque ul, .bloque ol { margin: 0 0 10px; padding-left: 22px; color: var(--muted); }
-.bloque li { margin-bottom: 4px; }
-.bloque li::marker { color: var(--accent); }
-.bloque strong { color: var(--fg); font-weight: 600; }
+
+.bloque h3 {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.bloque p {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+.bloque p:last-child,
+.bloque ul:last-child,
+.bloque ol:last-child {
+  margin-bottom: 0;
+}
+
+.bloque ul,
+.bloque ol {
+  margin: 0 0 10px;
+  padding-left: 22px;
+  color: var(--muted);
+}
+
+.bloque li {
+  margin-bottom: 4px;
+}
+
+.bloque li::marker {
+  color: var(--accent);
+}
+
+.bloque strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
 .formula {
   display: block;
   margin: 6px 0 10px;
@@ -139,26 +222,74 @@ h2 {
   white-space: normal;
   overflow-wrap: break-word;
 }
-.formula, .tabla { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
-.formula::-webkit-scrollbar, .tabla::-webkit-scrollbar { height: 6px; }
-.formula::-webkit-scrollbar-thumb, .tabla::-webkit-scrollbar-thumb { background: var(--line); }
-.formula::-webkit-scrollbar-track, .tabla::-webkit-scrollbar-track { background: transparent; }
-.nota { font-size: 13.5px; }
 
-.tabla { margin: 8px 0 10px; overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-th, td {
+.formula,
+.tabla {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.formula::-webkit-scrollbar,
+.tabla::-webkit-scrollbar {
+  height: 6px;
+}
+
+.formula::-webkit-scrollbar-thumb,
+.tabla::-webkit-scrollbar-thumb {
+  background: var(--line);
+}
+
+.formula::-webkit-scrollbar-track,
+.tabla::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nota {
+  font-size: 13.5px;
+}
+
+.tabla {
+  margin: 8px 0 10px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+th,
+td {
   padding: 9px 12px;
   text-align: left;
   vertical-align: top;
   color: var(--muted);
 }
-th { color: var(--fg); font-weight: 600; background: var(--line); }
-tbody tr:nth-child(odd) td { background: var(--surface); }
-td:first-child { color: var(--fg); }
-.num { font-variant-numeric: tabular-nums; }
 
-footer { margin-top: 12px; color: var(--muted); font-size: 12.5px; }
+th {
+  color: var(--fg);
+  font-weight: 600;
+  background: var(--line);
+}
+
+tbody tr:nth-child(odd) td {
+  background: var(--surface);
+}
+
+td:first-child {
+  color: var(--fg);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+footer {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
 
 /* Galería y Visor (paleta Kemuri Koke) */
 .galeria {
@@ -167,12 +298,14 @@ footer { margin-top: 12px; color: var(--muted); font-size: 12.5px; }
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 12px;
 }
+
 .figura {
   background: var(--surface);
   border: 1px solid var(--line);
   margin: 0;
   overflow: hidden;
 }
+
 .figura__marco {
   aspect-ratio: 16 / 10;
   display: grid;
@@ -180,18 +313,21 @@ footer { margin-top: 12px; color: var(--muted); font-size: 12.5px; }
   background: var(--inset);
   cursor: zoom-in;
 }
+
 .figura__marco img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+
 .figura figcaption {
   padding: 8px 12px;
   font-size: 12px;
   color: var(--muted);
   border-top: 1px solid var(--line);
 }
+
 .visor {
   position: fixed;
   inset: 0;
@@ -203,7 +339,11 @@ footer { margin-top: 12px; color: var(--muted); font-size: 12.5px; }
   padding: 24px;
   z-index: 100;
 }
-.visor[hidden] { display: none; }
+
+.visor[hidden] {
+  display: none;
+}
+
 .visor__img {
   max-width: 90vw;
   max-height: 80vh;
@@ -211,12 +351,14 @@ footer { margin-top: 12px; color: var(--muted); font-size: 12.5px; }
   background: var(--surface);
   object-fit: contain;
 }
+
 .visor__pie {
   margin-top: 12px;
   color: var(--fg);
   font-size: 13.5px;
   font-family: var(--font);
 }
+
 .visor__cerrar {
   position: absolute;
   top: 16px;
@@ -230,7 +372,16 @@ footer { margin-top: 12px; color: var(--muted); font-size: 12.5px; }
 }
 
 @media (max-width: 520px) {
-  body { padding-block: 32px 48px; font-size: 14px; }
-  .actividad { padding: 18px 14px; }
-  .bloque { padding: 14px; }
+  body {
+    padding-block: 32px 48px;
+    font-size: 14px;
+  }
+
+  .actividad {
+    padding: 18px 14px;
+  }
+
+  .bloque {
+    padding: 14px;
+  }
 }
