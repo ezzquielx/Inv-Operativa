@@ -14,7 +14,7 @@ const CONTENIDO = {
     materia: {
         etiqueta: "Investigación Operativa",
         titulo: "Actividades",
-        descripcion: "Resolución de modelos de optimización correspondientes a la Unidad 2 (Programación Lineal) y Unidad 3 (Problema del Transporte y Modelos de Stock) utilizando herramientas de Solver en Excel.",
+        descripcion: "Resúmenes teóricos y resolución de modelos de optimización: Unidad 1 (Introducción y Modelización), Unidad 2 (Programación Lineal) y Unidad 3 (Problema del Transporte y Modelos de Stock) con Solver en Excel.",
         datos: [
             { clave: "Profesor", valor: "Juarez, Luis" },
             { clave: "Ciclo", valor: "2026" },
@@ -23,6 +23,76 @@ const CONTENIDO = {
     },
 
     actividades: [
+        {
+            titulo: "U1 - Introducción a la Investigación Operativa y Modelización",
+            fecha: "Unidad 1",
+            texto: "Resumen conceptual de la Investigación Operativa: definición, origen histórico, evolución en el tiempo, metodología sistemática en 7 pasos, clasificación de modelos determinísticos y estocásticos, toma de decisiones y ejemplos resueltos de aplicación.",
+            secciones: [
+                {
+                    subtitulo: "¿Qué es la IO?",
+                    texto: "Es la ciencia de tomar mejores decisiones usando métodos matemáticos y análisis de datos. Transforma problemas complejos de la vida real en modelos matemáticos para encontrar la solución óptima."
+                },
+                {
+                    subtitulo: "Origen Histórico",
+                    texto: "Nació en la Segunda Guerra Mundial, en Inglaterra. Equipos de matemáticos, físicos e ingenieros optimizaron la ubicación de radares, los convoyes de barcos, los bombardeos y la logística, con mejoras de entre 20 y 30% en eficiencia."
+                },
+                {
+                    subtitulo: "Evolución",
+                    items: [
+                        "<strong>1950-1960:</strong> se extiende a la industria (producción, inventarios, transporte).",
+                        "<strong>1970-1980:</strong> aparece el software especializado y se resuelven modelos de gran escala.",
+                        "<strong>1990 hasta hoy:</strong> se integra con las tecnologías de la información, el Big Data y la IA."
+                    ]
+                },
+                {
+                    subtitulo: "Metodología en 7 Pasos",
+                    pasos: [
+                        { paso: 1, titulo: "Definir el problema", desc: "Identificar los objetivos del sistema, las variables y el alcance." },
+                        { paso: 2, titulo: "Formular el modelo", desc: "Definir variables de decisión, función objetivo y restricciones." },
+                        { paso: 3, titulo: "Obtener datos", desc: "Recolectar información cuantitativa precisa para los parámetros." },
+                        { paso: 4, titulo: "Resolver el modelo", desc: "Aplicar algoritmos matemáticos para hallar la solución óptima." },
+                        { paso: 5, titulo: "Validar el modelo", desc: "Verificar con datos históricos, pruebas de sensibilidad y opinión de expertos." },
+                        { paso: 6, titulo: "Implementar la solución", desc: "Llevar la solución matemática a la práctica operativa de la organización." },
+                        { paso: 7, titulo: "Seguimiento y mantenimiento", desc: "Control continuo para asegurar que el modelo se adapte a cambios del entorno." }
+                    ]
+                },
+                {
+                    subtitulo: "Tipos de Modelos",
+                    tabla: {
+                        encabezados: ["", "Estático (un solo período)", "Dinámico (varios períodos)"],
+                        filas: [
+                            ["<strong>Determinístico</strong><br><small>(datos ciertos)</small>", "Asignación de tareas a servidores", "Planificación de backups"],
+                            ["<strong>Estocástico</strong><br><small>(con incertidumbre)</small>", "Diseño de un balanceador de carga", "Gestión adaptativa de caché"]
+                        ]
+                    }
+                },
+                {
+                    subtitulo: "Toma de Decisiones Basada en Modelos",
+                    texto: "Reemplaza la intuición por datos y análisis. Es objetiva, reproducible y cuantifica riesgos. Incluye <strong>análisis de sensibilidad</strong> (¿qué pasa si la demanda sube 20%?)."
+                },
+                {
+                    subtitulo: "Ejemplos Resueltos",
+                    ejemplos: [
+                        {
+                            badge: "Redes y Rutas",
+                            tema: "Camino más corto",
+                            detalle: "Casa→A→Universidad y Casa→B→Universidad dan <strong>13 min</strong>, contra <strong>15 min</strong> por la ruta directa."
+                        },
+                        {
+                            badge: "Inventarios",
+                            tema: "Inventario (EOQ)",
+                            detalle: "Con D=200/mes, K=$50 y h=$2:<br><code>Q* = √(2·200·50/2) = 100 unidades</code><br>Es decir, pedir cada 2 semanas con un costo total de <strong>$200/mes</strong>."
+                        },
+                        {
+                            badge: "Asignación",
+                            tema: "Asignación de programadores",
+                            detalle: "La mejor asignación es <code>P1→A</code>, <code>P2→B</code>, <code>P3→C</code>, con un total de <strong>16 días</strong>. La asignación \"intuitiva\" falla porque dos programadores quieren el mismo proyecto."
+                        }
+                    ]
+                }
+            ],
+            imagenes: []
+        },
         {
             titulo: "U2 - Programación Lineal",
             fecha: "Unidad 2",
@@ -81,10 +151,13 @@ const CONTENIDO = {
    ===================================================================== */
 (function () {
     const $ = (id) => document.getElementById(id);
-    const crear = (tag, clase, texto) => {
+    const crear = (tag, clase, texto, esHtml = false) => {
         const el = document.createElement(tag);
         if (clase) el.className = clase;
-        if (texto !== undefined) el.textContent = texto;
+        if (texto !== undefined) {
+            if (esHtml) el.innerHTML = texto;
+            else el.textContent = texto;
+        }
         return el;
     };
 
@@ -127,6 +200,83 @@ const CONTENIDO = {
             const ul = crear("ul", "actividad__lista");
             a.puntos.forEach((p) => ul.appendChild(crear("li", "", p)));
             sec.appendChild(ul);
+        }
+
+        if (a.secciones && a.secciones.length) {
+            const contSecciones = crear("div", "secciones");
+            a.secciones.forEach((s) => {
+                const sEl = crear("div", "seccion");
+
+                if (s.subtitulo) {
+                    const cab = crear("div", "seccion__cabecera");
+                    cab.append(crear("h3", "seccion__titulo", s.subtitulo));
+                    sEl.appendChild(cab);
+                }
+
+                if (s.texto) {
+                    sEl.appendChild(crear("p", "seccion__texto", s.texto, true));
+                }
+
+                if (s.items && s.items.length) {
+                    const ul = crear("ul", "seccion__lista");
+                    s.items.forEach((it) => ul.appendChild(crear("li", "", it, true)));
+                    sEl.appendChild(ul);
+                }
+
+                if (s.pasos && s.pasos.length) {
+                    const pGrid = crear("div", "pasos-grid");
+                    s.pasos.forEach((p) => {
+                        const card = crear("div", "paso-card");
+                        const num = crear("span", "paso-card__num", String(p.paso));
+                        const info = crear("div", "paso-card__contenido");
+                        info.append(
+                            crear("strong", "", p.titulo),
+                            crear("p", "", p.desc)
+                        );
+                        card.append(num, info);
+                        pGrid.appendChild(card);
+                    });
+                    sEl.appendChild(pGrid);
+                }
+
+                if (s.tabla) {
+                    const wrap = crear("div", "tabla-contenedor");
+                    const table = crear("table", "tabla-io");
+                    if (s.tabla.encabezados) {
+                        const thead = crear("thead");
+                        const tr = crear("tr");
+                        s.tabla.encabezados.forEach((th) => tr.appendChild(crear("th", "", th, true)));
+                        thead.appendChild(tr);
+                        table.appendChild(thead);
+                    }
+                    if (s.tabla.filas) {
+                        const tbody = crear("tbody");
+                        s.tabla.filas.forEach((fila) => {
+                            const tr = crear("tr");
+                            fila.forEach((td) => tr.appendChild(crear("td", "", td, true)));
+                            tbody.appendChild(tr);
+                        });
+                        table.appendChild(tbody);
+                    }
+                    wrap.appendChild(table);
+                    sEl.appendChild(wrap);
+                }
+
+                if (s.ejemplos && s.ejemplos.length) {
+                    const eGrid = crear("div", "ejemplos-grid");
+                    s.ejemplos.forEach((ej) => {
+                        const card = crear("div", "ejemplo-card");
+                        if (ej.badge) card.appendChild(crear("span", "ejemplo-card__badge", ej.badge));
+                        if (ej.tema) card.appendChild(crear("h4", "ejemplo-card__titulo", ej.tema));
+                        if (ej.detalle) card.appendChild(crear("p", "ejemplo-card__detalle", ej.detalle, true));
+                        eGrid.appendChild(card);
+                    });
+                    sEl.appendChild(eGrid);
+                }
+
+                contSecciones.appendChild(sEl);
+            });
+            sec.appendChild(contSecciones);
         }
 
         if (a.imagenes && a.imagenes.length) {
